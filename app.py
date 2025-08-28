@@ -11,7 +11,8 @@ def home():
 @app.route("/api/v1/analyze", methods=['POST'])
 def analyze():
     try:
-        image_data = request.get_data(cache=False)
+        image_data = request.get_data()
+        # print(len(image_data))
         llm_response = get_llm_response(image_data)
         response_data = {
             "text": llm_response
